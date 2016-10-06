@@ -7,9 +7,44 @@
 //
 
 #include <iostream>
+#include <vector>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+using namespace std;
+
+int searchInsert(vector<int>& nums, int target)
+{
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (target < nums[0])
+        {
+            return 0;
+        }
+
+        if (target == nums[i])
+        {
+            return i;
+        }
+        else
+        {
+            if (target > nums[i] && target < nums[i + 1])
+            {
+                return i + 1;
+            }
+        }
+    }
+
+    return (int)nums.size();
+}
+
+int main(int argc, const char * argv[])
+{
+    int arr[] = {1,3,5,6};
+    vector<int>vv(arr,arr+sizeof(arr)/sizeof(int));
+
+    int result = searchInsert(vv,60);
+    cout << result;
+
+
+
     return 0;
 }
